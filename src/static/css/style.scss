@@ -8,8 +8,13 @@
     src: url('../fonts/Abel/Abel-Regular.ttf');
 }
 
+@font-face {
+    font-family: Raleway;
+    src: url('../fonts/Raleway/Raleway-Light.ttf');
+}
+
 html {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 h1 {
@@ -20,10 +25,45 @@ h1 {
 }
 
 h2 {
-    font-family: Abel;
+    // font-family: Abel;
 }
 
 body {
-    font-family: Abel;
+    font-family: Raleway;
     padding: 2rem;
+}
+
+.barchart-container {
+    margin-top: 3rem;
+}
+
+.barchart {
+    transform: scaleY(-1);
+}
+
+.bar-text {
+    transform: scaleY(-1);
+}
+
+.bar-info {
+    color: red;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+rect {
+    fill: #343434;
+    animation: rect-anim;
+    animation-direction: reverse;
+    animation-duration: 1s;
+}
+
+@keyframes rect-anim {
+    100% {
+        height: 0;
+    }
 }
