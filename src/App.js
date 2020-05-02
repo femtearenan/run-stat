@@ -16,7 +16,7 @@ class App extends React.Component {
           <p>Profile: Anders Björkland</p>
         </header>
         <article>
-          <BarChart />
+          <BarChart id="1"/>
         </article>
       </div>
     );

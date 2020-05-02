@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import { getData } from './redux/actions';
+import { getRunData, getRunTypeData } from './redux/actions';
 
 import './index.css';
 import App from './App';
@@ -22,4 +22,5 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-store.dispatch(getData()).then(() => console.log(store.getState()));
+store.dispatch(getRunData("runData"));
+store.dispatch(getRunTypeData("typeData"));
