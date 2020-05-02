@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { requestData } from './redux/actions'
-import './App.css';
-import { render } from '@testing-library/react';
+import './static/css/style.min.css';
+// import { render } from '@testing-library/react';
+
+import BarChart from './components/BarChart';
 
 class App extends React.Component {
 
@@ -13,6 +15,9 @@ class App extends React.Component {
           <h1>Runner statistics</h1>
           <p>Profile: Anders Björkland</p>
         </header>
+        <article>
+          <BarChart />
+        </article>
       </div>
     );
   }
