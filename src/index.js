@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import { getData } from './redux/actions';
+
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
@@ -15,3 +22,4 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+store.dispatch(getData()).then(() => console.log(store.getState()));
