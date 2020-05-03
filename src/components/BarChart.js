@@ -45,23 +45,31 @@ class BarChart extends React.Component {
                 .attr("width", 50)
                 .attr("height", (d, i) => yScale(d.runs.length));
 
-            svg.selectAll("text")
+            svg.selectAll("text.bar-text")
                 .data(typeData)
                 .enter()
                 .append("text")
                 .text((d) =>  (d.name))
                 .attr("class", "bar-text")
                 .attr("x", (d, i) => i * 75)
-                .attr("y", (d) => 0);
+                .attr("y", (d) => -10);
 
-            svg.selectAll("text")
+            svg.selectAll("text.bar-info")
                 .data(typeData)
                 .enter()
                 .append("text")
                 .text((d) =>  (d.runs.length))
                 .attr("class", "bar-info")
-                .attr("x", (d, i) => i * 75)
-                .attr("y", (d) => yScale(d.runs.length)/2);
+                .attr("x", (d, i) => { 
+                    let centering = 20;
+                    if (d.runs.length  < 10) {
+                        centering = 20;
+                    } else if (d.runs.length  < 100) {
+                        centering = 17;
+                    }
+                    return i * 75 + centering;
+                })
+                .attr("y", (d) => -yScale(d.runs.length)/2);
         }
 
     }
@@ -72,7 +80,7 @@ class BarChart extends React.Component {
         if (this.props.isOK) {
             return (
                 <div id={"chart-" + this.props.id} className="barchart-container" >
-                    <h2>Type of runs on record</h2>
+                    <h2>Number of runs on record</h2>
                     {this.drawChart()}
                     <p>Normal runs are classic distance runs. Interval runs are any of hill runs, fartlek or intervals. <br/>(Source: <a href="https://femtearenan.se">femtearenan.se</a>)</p>
 
