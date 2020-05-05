@@ -75,3 +75,33 @@ rect {
         opacity: 0;
     }
 }
+
+.dot {
+    fill: #343434;
+}
+
+.undefined .dot {
+    cx: 50;
+}
+
+.anim .dot{
+    animation: dot-anim;
+    animation-direction: reverse;
+    animation-duration: 1s;
+}
+
+.dot.orange {
+    fill: hsl(39, 50%, 50%);
+}
+
+.legend {
+    fill: red;
+}
+
+@keyframes dot-anim {
+
+    100% {
+        cx: 50;
+        opacity: 1;
+    }
+}

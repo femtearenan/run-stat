@@ -23,7 +23,6 @@ class BarChart extends React.Component {
 
             const runData = this.props.runData;
             const typeData = this.props.typeData;
-            console.log(typeData);
 
             const normalRun = runData.filter(run => run.type === "/api/run_types/1");
             const intervalRun = runData.filter(run => run.type !== "/api/run_types/1");

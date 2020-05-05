@@ -89,4 +89,41 @@ rect {
     opacity: 0;
   }
 }
+.dot {
+  fill: #343434;
+}
+
+.undefined .dot {
+  cx: 50;
+}
+
+.anim .dot {
+  -webkit-animation: dot-anim;
+          animation: dot-anim;
+  animation-direction: reverse;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
+.dot.orange {
+  fill: #bf9340;
+}
+
+.legend {
+  fill: red;
+}
+
+@-webkit-keyframes dot-anim {
+  100% {
+    cx: 50;
+    opacity: 1;
+  }
+}
+
+@keyframes dot-anim {
+  100% {
+    cx: 50;
+    opacity: 1;
+  }
+}
 /*# sourceMappingURL=style.css.map */
