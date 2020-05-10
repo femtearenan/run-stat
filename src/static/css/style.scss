@@ -26,7 +26,16 @@ h1 {
 
 body {
     font-family: Raleway;
-    padding: 2rem;
+    padding: 5rem 15rem;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+}
+
+#chart-1 {
+    order: 3;
 }
 
 .barchart-container {
@@ -35,6 +44,12 @@ body {
 
 .barchart {
     transform: scaleY(-1);
+    rect {
+        fill: #343434;
+        animation: rect-anim;
+        animation-direction: reverse;
+        animation-duration: 1s;
+    }
 }
 
 .bar-text {
@@ -57,12 +72,84 @@ a {
     font-weight: bold;
 }
 
-rect {
-    fill: #343434;
-    animation: rect-anim;
-    animation-direction: reverse;
-    animation-duration: 1s;
+.hide {
+    opacity: 0;
 }
+
+.show {
+    opacity: 1;
+}
+
+
+#scatter-1 {
+    order: 2;
+}
+
+#heatmap {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        margin-top: 5rem;
+        // margin-left: 4.25rem;
+    }
+
+    rect {
+        font-size: 0.65rem;
+    }
+
+    g {
+        font-size: 0.65rem;
+
+    }
+
+    .order1 {
+        animation: fade-anim;
+        animation-direction: reverse;
+        animation-duration: 0.3s;
+    }
+    .order2 {
+        animation: fade-anim;
+        animation-direction: reverse;
+        animation-duration: 0.6s;
+    }
+    .order3 {
+        animation: fade-anim;
+        animation-direction: reverse;
+        animation-duration: 0.9s;
+    }
+    .order4 {
+        animation: fade-anim;
+        animation-direction: reverse;
+        animation-duration: 1.2s;
+    }
+    .order5 {
+        animation: fade-anim;
+        animation-direction: reverse;
+        animation-duration: 1.5s;
+    }
+    .order6 {
+        animation: fade-anim;
+        animation-direction: reverse;
+        animation-duration: 1.8s;
+    }
+
+    #tooltip {
+        height: 2rem;
+        width: 100%;
+    }
+
+    #legend, #tooltip {
+        margin-left: 4.25rem;
+    }
+
+    
+}
+
+
+
+
 
 @keyframes rect-anim {
     100% {
@@ -71,6 +158,12 @@ rect {
 }
 
 @keyframes info-anim {
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-anim {
     100% {
         opacity: 0;
     }

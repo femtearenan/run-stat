@@ -23,7 +23,23 @@ h1 {
 
 body {
   font-family: Raleway;
-  padding: 2rem;
+  padding: 5rem 15rem;
+}
+
+article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#chart-1 {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
 }
 
 .barchart-container {
@@ -33,6 +49,14 @@ body {
 .barchart {
   -webkit-transform: scaleY(-1);
           transform: scaleY(-1);
+}
+.barchart rect {
+  fill: #343434;
+  -webkit-animation: rect-anim;
+          animation: rect-anim;
+  animation-direction: reverse;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
 }
 
 .bar-text {
@@ -59,13 +83,89 @@ a {
   font-weight: bold;
 }
 
-rect {
-  fill: #343434;
-  -webkit-animation: rect-anim;
-          animation: rect-anim;
+.hide {
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+}
+
+#scatter-1 {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+
+#heatmap {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+#heatmap h2 {
+  margin-top: 5rem;
+}
+#heatmap rect {
+  font-size: 0.65rem;
+}
+#heatmap g {
+  font-size: 0.65rem;
+}
+#heatmap .order1 {
+  -webkit-animation: fade-anim;
+          animation: fade-anim;
   animation-direction: reverse;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+}
+#heatmap .order2 {
+  -webkit-animation: fade-anim;
+          animation: fade-anim;
+  animation-direction: reverse;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+}
+#heatmap .order3 {
+  -webkit-animation: fade-anim;
+          animation: fade-anim;
+  animation-direction: reverse;
+  -webkit-animation-duration: 0.9s;
+          animation-duration: 0.9s;
+}
+#heatmap .order4 {
+  -webkit-animation: fade-anim;
+          animation: fade-anim;
+  animation-direction: reverse;
+  -webkit-animation-duration: 1.2s;
+          animation-duration: 1.2s;
+}
+#heatmap .order5 {
+  -webkit-animation: fade-anim;
+          animation: fade-anim;
+  animation-direction: reverse;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+}
+#heatmap .order6 {
+  -webkit-animation: fade-anim;
+          animation: fade-anim;
+  animation-direction: reverse;
+  -webkit-animation-duration: 1.8s;
+          animation-duration: 1.8s;
+}
+#heatmap #tooltip {
+  height: 2rem;
+  width: 100%;
+}
+#heatmap #legend, #heatmap #tooltip {
+  margin-left: 4.25rem;
 }
 
 @-webkit-keyframes rect-anim {
@@ -85,6 +185,16 @@ rect {
   }
 }
 @keyframes info-anim {
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes fade-anim {
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade-anim {
   100% {
     opacity: 0;
   }

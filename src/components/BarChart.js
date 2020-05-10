@@ -21,11 +21,7 @@ class BarChart extends React.Component {
                 .attr("width", width)
                 .attr("height", height);
 
-            const runData = this.props.runData;
             const typeData = this.props.typeData;
-
-            const normalRun = runData.filter(run => run.type === "/api/run_types/1");
-            const intervalRun = runData.filter(run => run.type !== "/api/run_types/1");
 
             const yScale = d3.scaleLinear()
                     .domain([0, d3.max(typeData, (d) => d.runs.length)])
@@ -89,7 +85,7 @@ class BarChart extends React.Component {
         } else {
             return (
                 <div id={"chart-" + this.props.id} className="barchart-container">
-                    <h2>Loading chart data</h2>
+                    <h2></h2>
                 </div>
             );
         }

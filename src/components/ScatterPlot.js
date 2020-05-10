@@ -29,9 +29,6 @@ class ScatterPlot extends React.Component {
             });
             const typeData = this.props.typeData;
 
-            const normalRun = runData.filter(run => run.type === "/api/run_types/1");
-            const intervalRun = runData.filter(run => run.type !== "/api/run_types/1");
-
             let dateMin = d3.min(runData, d => d.date);
 
             if (dateMin.getMonth() === 0) {
@@ -54,7 +51,6 @@ class ScatterPlot extends React.Component {
                     .range([height - padding, padding]);
 
             let rectId = 0;
-            console.log(new Date(1970, 0, 1, 0, 0, 0));
             svg.selectAll("circle")
                 .data(runData)
                 .enter()
@@ -85,20 +81,13 @@ class ScatterPlot extends React.Component {
                 .attr("id", "y-axis")
                 .call(yAxis);
 
-            // svg.append("rect")
-            //     .attr("class", "legend")
-            //     .attr("height", 100)
-            //     .attr("width", 100)
-            //     .attr("x", width - 50)
-            //     .attr("y", height / 2)
-            console.log(`#scatter-legend-${this.props.id}`);
+
             const legend = d3.select(`#scatter-${this.props.id} `)
                 .append("svg")
                 .attr("class", "scatter-legend")
                 .attr("width", 100)
                 .attr("height", 100);
 
-            console.log(typeData);
             legend.selectAll("circle")
                 .data(typeData)
                 .enter()
@@ -140,7 +129,7 @@ class ScatterPlot extends React.Component {
         } else {
             return (
                 <div id={"scatter-" + this.props.id} className="barchart-container">
-                    <h2>Loading chart data</h2>
+                    <h2></h2>
                 </div>
             );
         }
