@@ -5,9 +5,9 @@ import D3HeatMap from '../tools/D3HeatMap';
 class HeatMap extends React.Component {
     constructor(props) {
         super(props);
-        this.width = this.props.width;
-        this.height = this.props.height;
-        this.padding = this.props.padding;
+        this.width = 400;
+        this.height = 300;
+        this.padding = 40;
         this.drawHeatMap = this.drawHeatMap.bind(this);
         this.isDrawn = false;
     }

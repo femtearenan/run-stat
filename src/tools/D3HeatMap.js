@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 
 class D3HeatMap {
-    constructor(data, selection = "#heatmap", heatAttribute = {x: "year", y: "month", heat: "variance"}, dimension = { height: 500, width: 800, padding: { x: 60, y: 40} }) {
+    constructor(data, selection = "#heatmap", heatAttribute = {x: "year", y: "month", heat: "variance"}, dimension = { height: 300, width: 600, padding: { x: 60, y: 40} }) {
         this.data = data;
         this.selection = selection;
         this.heatAttribute = heatAttribute;
@@ -62,9 +62,6 @@ class D3HeatMap {
             yAxis.tickFormat(d3.format(yFormat))
         }
 
-        d3.select(this.selection)
-            .append("h2")
-            .text("Running durations per weekday and month");
         const svg = d3.select(this.selection)
                         .append("svg")
                         .attr("class", "map-content")
@@ -93,7 +90,6 @@ class D3HeatMap {
             .attr('width', this.cell.width)
             .attr('class', d => {
                 let order = Math.floor(d[this.heatAttribute.heat] / heatInterval);
-                console.log(order);
                 return 'order' + order; 
             })
             .attr('data-' + this.heatAttribute.x, d => d[this.heatAttribute.x])

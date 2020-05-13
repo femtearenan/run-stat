@@ -11,7 +11,7 @@ class ScatterPlot extends React.Component {
 
     drawChart() {
         if (this.props.isOK && !this.isDrawn) {
-            const height = 400;
+            const height = 300;
             const width = 600;
             const padding = 50;
 
@@ -54,9 +54,9 @@ class ScatterPlot extends React.Component {
                 .attr("id", () => "rect-" + rectId++ )
                 .attr("class", d => {
                     if (d.type === "/api/run_types/2") {
-                        return "dot orange";
+                        return "anim dot orange";
                     } else {
-                        return "dot";
+                        return "anim dot";
                     }
                 })
                 .attr("r", 5)
@@ -118,16 +118,13 @@ class ScatterPlot extends React.Component {
         if (this.props.isOK) {
             return (
                 <div id={"scatter-" + this.props.id} className="barchart-container" >
-                    <h2>Dates and distances</h2>
                     {this.drawChart()}
-
                 </div>
             )
 
         } else {
             return (
                 <div id={"scatter-" + this.props.id} className="barchart-container">
-                    <h2></h2>
                 </div>
             );
         }

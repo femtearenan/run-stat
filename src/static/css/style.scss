@@ -1,3 +1,8 @@
+$paddingTop: 2rem;
+$padding: 2rem;
+$menuShadowColor: #1f1f1f;
+$menuShadowColorActive: #333333;
+
 @font-face {
     font-family: Cinzel;
     src: url('../fonts/Cinzel_Decorative/CinzelDecorative-Regular.ttf');
@@ -16,7 +21,89 @@
 html {
     font-size: 14px;
 }
+body {
+    font-family: Raleway;
+    padding: 5rem 0;
+}
 
+header {
+    padding: $padding $padding 0 $padding;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    color: #f0eeec;
+    background-color: #242424;
+
+    nav {
+        display: inline-flex;
+        // background-color: #f0eeec;
+        padding: 0.3rem 0 0.3rem 0.3rem;
+    }
+
+    svg {
+        position: absolute;
+        bottom: 0rem;
+        right: 5rem;
+    }
+    #g14 {
+        fill: #7994ff;
+    }
+
+    #path16, #path18 {
+        fill: #f0eeec;
+    }
+
+    button {
+        height: 2rem;
+        width: 6.5rem;
+        margin-right: 0.6rem;
+        outline: none;
+        border: none;
+        border-radius: 0;
+        color: hsl(30, 12%, 85%);
+        background-color: $menuShadowColor;
+        box-shadow: 0px -0.2rem 0px $menuShadowColor, 0.2rem 0px 0px $menuShadowColor, 0px 0.2rem 0px $menuShadowColor, -0.2rem 0px 0px $menuShadowColor,
+                    -0.2rem -0.2rem 0px $menuShadowColor, -0.2rem 0.2rem 0px $menuShadowColor, 0.2rem 0.2rem 0px $menuShadowColor, 0.2rem -0.2rem 0px $menuShadowColor;
+    }
+
+    button.active {
+        background-color: $menuShadowColorActive;
+        box-shadow: 0px -0.2rem 0px $menuShadowColorActive, 0.2rem 0px 0px $menuShadowColorActive, 0px 0.2rem 0px $menuShadowColorActive, -0.2rem 0px 0px $menuShadowColorActive,
+            -0.2rem -0.2rem 0px $menuShadowColorActive, -0.2rem 0.2rem 0px $menuShadowColorActive, 0.2rem 0.2rem 0px $menuShadowColorActive, 0.2rem -0.2rem 0px $menuShadowColorActive;
+    }
+
+    button:hover {
+        cursor: pointer;
+    }
+}
+
+#view {
+    padding: 8rem $padding $padding $padding;
+    z-index: 0;
+}
+
+#analyses {
+    h3 {
+        margin-top: 0;
+    }
+
+    .info {
+        margin-left: 3.5rem;
+        margin-top: 0;
+    }
+}
+
+#meta {
+    .stats-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.description {
+    width: 400px;
+}
 h1 {
     font-family: Cinzel;
     font-size: 4rem;
@@ -24,9 +111,8 @@ h1 {
     line-height: 4rem;
 }
 
-body {
-    font-family: Raleway;
-    padding: 5rem 15rem;
+h3 {
+    margin-top: 2rem;
 }
 
 article {
@@ -34,8 +120,24 @@ article {
     flex-direction: column;
 }
 
+#chart-types {
+    display: flex;
+    justify-content: center;
+}
+
 #chart-1 {
     order: 3;
+}
+
+.view {
+    div {
+        margin-top: 2rem;
+    }
+}
+
+.stats-container {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .barchart-container {
@@ -49,6 +151,28 @@ article {
         animation: rect-anim;
         animation-direction: reverse;
         animation-duration: 1s;
+    }
+}
+
+.histogram {
+    rect {
+        opacity: 0;
+        fill: #343434;
+        animation: histo-rect-anim;
+        animation-delay: 0.5s;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+}
+
+.info {
+    margin-left: 3rem;
+    .flex {
+        display: flex;
+
+        p {
+            margin: 0 1rem 0 0;
+        }
     }
 }
 
@@ -87,10 +211,6 @@ a {
     display: block;
 }
 
-.active {
-    background-color: red;
-}
-
 
 #scatter-1 {
     order: 2;
@@ -102,7 +222,7 @@ a {
     flex-direction: column;
 
     h2 {
-        margin-top: 5rem;
+        // margin-top: 5rem;
         // margin-left: 4.25rem;
     }
 
@@ -146,7 +266,12 @@ a {
         animation-duration: 1.8s;
     }
 
+    .map-content {
+        order: 2;
+    }
+
     #tooltip {
+        order: 1;
         height: 2rem;
         width: 100%;
     }
@@ -155,12 +280,20 @@ a {
         margin-left: 4.25rem;
     }
 
+    #legend {
+        order: 3;
+    }
+
     
 }
 
 
 
-
+@keyframes histo-rect-anim {
+    100% {
+        opacity: 1;
+    }
+}
 
 @keyframes rect-anim {
     100% {
@@ -188,7 +321,7 @@ a {
     cx: 50;
 }
 
-.anim .dot{
+.anim.dot{
     animation: dot-anim;
     animation-direction: reverse;
     animation-duration: 1s;
@@ -199,13 +332,12 @@ a {
 }
 
 .legend {
-    fill: red;
+    // fill: red;
 }
 
 @keyframes dot-anim {
 
     100% {
         cx: 50;
-        opacity: 1;
     }
 }

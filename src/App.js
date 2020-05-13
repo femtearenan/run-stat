@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { requestData, views, changeView } from './redux/actions'
 import './static/css/style.min.css';
 // import { render } from '@testing-library/react';
-import BarChart from './components/BarChart';
-import ScatterPlot from './components/ScatterPlot';
-import HeatMap from './components/HeatMap';
+import Basic from './components/Basic';
+import Analyses from './components/Analyses';
+import Meta from './components/Meta';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +18,6 @@ class App extends React.Component {
     let idName = event.target.id;
     let btnIndex = idName.indexOf("Btn");
     let view = idName.substr(0, btnIndex);
-    console.log(view);
 
     if (view !== undefined) {
       this.props.switchView(view);
@@ -32,22 +31,27 @@ class App extends React.Component {
         <header className="App-header">
           <h1>Runner statistics</h1>
           <p>Profile: Anders Björkland</p>
-          <nav >
+          <nav>
             <button id={this.views[0] + "Btn"} onClick={this.switchView} className={this.props.currentView.basic === "display" ? "active" : ""}>Basic data</button>
             <button id={this.views[1] + "Btn"} onClick={this.switchView} className={this.props.currentView.analyses === "display" ? "active" : ""}>Analyses</button>
-            <button id={this.views[2] + "Btn"} onClick={this.switchView} className={this.props.currentView.meta === "display" ? "active" : ""}>Meta data</button>
+            <button id={this.views[2] + "Btn"} onClick={this.switchView} className={this.props.currentView.meta === "display" ? "active" : ""}>Meta info</button>
           </nav>
         </header>
-        <div id="view">
+        <div id="view" className={this.props.isOK ? "" : "none"}>
             <div className={this.props.currentView.basic}>
-                <BarChart id="basic"/>
+                <Basic id="basic"/>
             </div>
             <div className={this.props.currentView.analyses}>
-                <ScatterPlot id="analyses" />
+                <Analyses id="analyses" />
             </div>
             <div className={this.props.currentView.meta}>
-                <HeatMap id="meta" />
+                <Meta id="meta" />
             </div>   
+        </div>
+        <div className={this.props.isOK ? "none" : ""}>
+            <div>
+              <h3>Loading runner data</h3>
+            </div> 
         </div>
       </div>
     );

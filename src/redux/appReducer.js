@@ -41,7 +41,6 @@ function appReducer(state = initialState, action) {
 
             if (action.dataType === "runData") {
                 const runData = action.payload.data.map(d => {
-                    console.log(d.time);
                     return Object.assign({}, d, {
                         date:  new Date(d.date),
                         time: new Date(d.time.toLocaleString().slice(0, 19))

@@ -14,6 +14,85 @@ html {
   font-size: 14px;
 }
 
+body {
+  font-family: Raleway;
+  padding: 5rem 0;
+}
+
+header {
+  padding: 2rem 2rem 0 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  color: #f0eeec;
+  background-color: #242424;
+}
+header nav {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 0.3rem 0 0.3rem 0.3rem;
+}
+header svg {
+  position: absolute;
+  bottom: 0rem;
+  right: 5rem;
+}
+header #g14 {
+  fill: #7994ff;
+}
+header #path16, header #path18 {
+  fill: #f0eeec;
+}
+header button {
+  height: 2rem;
+  width: 6.5rem;
+  margin-right: 0.6rem;
+  outline: none;
+  border: none;
+  border-radius: 0;
+  color: #ddd9d4;
+  background-color: #1f1f1f;
+  -webkit-box-shadow: 0px -0.2rem 0px #1f1f1f, 0.2rem 0px 0px #1f1f1f, 0px 0.2rem 0px #1f1f1f, -0.2rem 0px 0px #1f1f1f, -0.2rem -0.2rem 0px #1f1f1f, -0.2rem 0.2rem 0px #1f1f1f, 0.2rem 0.2rem 0px #1f1f1f, 0.2rem -0.2rem 0px #1f1f1f;
+          box-shadow: 0px -0.2rem 0px #1f1f1f, 0.2rem 0px 0px #1f1f1f, 0px 0.2rem 0px #1f1f1f, -0.2rem 0px 0px #1f1f1f, -0.2rem -0.2rem 0px #1f1f1f, -0.2rem 0.2rem 0px #1f1f1f, 0.2rem 0.2rem 0px #1f1f1f, 0.2rem -0.2rem 0px #1f1f1f;
+}
+header button.active {
+  background-color: #333333;
+  -webkit-box-shadow: 0px -0.2rem 0px #333333, 0.2rem 0px 0px #333333, 0px 0.2rem 0px #333333, -0.2rem 0px 0px #333333, -0.2rem -0.2rem 0px #333333, -0.2rem 0.2rem 0px #333333, 0.2rem 0.2rem 0px #333333, 0.2rem -0.2rem 0px #333333;
+          box-shadow: 0px -0.2rem 0px #333333, 0.2rem 0px 0px #333333, 0px 0.2rem 0px #333333, -0.2rem 0px 0px #333333, -0.2rem -0.2rem 0px #333333, -0.2rem 0.2rem 0px #333333, 0.2rem 0.2rem 0px #333333, 0.2rem -0.2rem 0px #333333;
+}
+header button:hover {
+  cursor: pointer;
+}
+
+#view {
+  padding: 8rem 2rem 2rem 2rem;
+  z-index: 0;
+}
+
+#analyses h3 {
+  margin-top: 0;
+}
+#analyses .info {
+  margin-left: 3.5rem;
+  margin-top: 0;
+}
+
+#meta .stats-container {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.description {
+  width: 400px;
+}
+
 h1 {
   font-family: Cinzel;
   font-size: 4rem;
@@ -21,9 +100,8 @@ h1 {
   line-height: 4rem;
 }
 
-body {
-  font-family: Raleway;
-  padding: 5rem 15rem;
+h3 {
+  margin-top: 2rem;
 }
 
 article {
@@ -36,10 +114,31 @@ article {
           flex-direction: column;
 }
 
+#chart-types {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 #chart-1 {
   -webkit-box-ordinal-group: 4;
       -ms-flex-order: 3;
           order: 3;
+}
+
+.view div {
+  margin-top: 2rem;
+}
+
+.stats-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .barchart-container {
@@ -57,6 +156,31 @@ article {
   animation-direction: reverse;
   -webkit-animation-duration: 1s;
           animation-duration: 1s;
+}
+
+.histogram rect {
+  opacity: 0;
+  fill: #343434;
+  -webkit-animation: histo-rect-anim;
+          animation: histo-rect-anim;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.info {
+  margin-left: 3rem;
+}
+.info .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.info .flex p {
+  margin: 0 1rem 0 0;
 }
 
 .bar-text {
@@ -99,10 +223,6 @@ a {
   display: block;
 }
 
-.active {
-  background-color: red;
-}
-
 #scatter-1 {
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
@@ -120,9 +240,6 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-}
-#heatmap h2 {
-  margin-top: 5rem;
 }
 #heatmap rect {
   font-size: 0.65rem;
@@ -172,20 +289,43 @@ a {
   -webkit-animation-duration: 1.8s;
           animation-duration: 1.8s;
 }
+#heatmap .map-content {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
 #heatmap #tooltip {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
   height: 2rem;
   width: 100%;
 }
 #heatmap #legend, #heatmap #tooltip {
   margin-left: 4.25rem;
 }
+#heatmap #legend {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
 
+@-webkit-keyframes histo-rect-anim {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes histo-rect-anim {
+  100% {
+    opacity: 1;
+  }
+}
 @-webkit-keyframes rect-anim {
   100% {
     height: 0;
   }
 }
-
 @keyframes rect-anim {
   100% {
     height: 0;
@@ -219,7 +359,7 @@ a {
   cx: 50;
 }
 
-.anim .dot {
+.anim.dot {
   -webkit-animation: dot-anim;
           animation: dot-anim;
   animation-direction: reverse;
@@ -231,21 +371,15 @@ a {
   fill: #bf9340;
 }
 
-.legend {
-  fill: red;
-}
-
 @-webkit-keyframes dot-anim {
   100% {
     cx: 50;
-    opacity: 1;
   }
 }
 
 @keyframes dot-anim {
   100% {
     cx: 50;
-    opacity: 1;
   }
 }
 /*# sourceMappingURL=style.css.map */
