@@ -1,6 +1,18 @@
 export const REQUEST_DATA = "REQUEST_DATA";
 export const RESOLVED_GET_DATA = "RESOLVED_GET_DATA";
 export const FAILED_GET_DATA = "FAILED_GET_DATA";
+export const CHANGE_VIEW = "CHANGE_VIEW";
+
+export const views = ["basic", "analyses", "meta"];
+
+export const changeView = (view) => {
+    return {
+        type: CHANGE_VIEW,
+        payload: {
+            view: view
+        }
+    }
+}
 
 export const getRunData = (dataType) => {
 

@@ -6,10 +6,11 @@ class ScatterPlot extends React.Component {
     constructor(props) {
         super(props);
         this.drawChart = this.drawChart.bind(this);
+        this.isDrawn = false;
     }
 
     drawChart() {
-        if (this.props.isOK) {
+        if (this.props.isOK && !this.isDrawn) {
             const height = 400;
             const width = 600;
             const padding = 50;
@@ -21,12 +22,7 @@ class ScatterPlot extends React.Component {
                 .attr("width", width)
                 .attr("height", height);
 
-            const runData = this.props.runData.map(d => {
-                return Object.assign({}, d, {
-                    date:  new Date(d.date),
-                    time: new Date(d.time.slice(0, 19))
-                });
-            });
+            const runData = this.props.runData;
             const typeData = this.props.typeData;
 
             let dateMin = d3.min(runData, d => d.date);
@@ -110,6 +106,8 @@ class ScatterPlot extends React.Component {
                 .text(d => d.name)
                 .attr("x", 20)
                 .attr("y", (d, i) => 12 + i * 20);
+
+            this.isDrawn = true;
         }
 
     }

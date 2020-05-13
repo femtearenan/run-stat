@@ -1,4 +1,5 @@
-import {REQUEST_DATA, RESOLVED_GET_DATA, FAILED_GET_DATA} from './actions'
+import {REQUEST_DATA, RESOLVED_GET_DATA, FAILED_GET_DATA, CHANGE_VIEW, views} from './actions';
+
 
 const INITIALIZING = "Initializing";
 const FETCHING = "Fetching";
@@ -12,7 +13,12 @@ const initialState = {
     isOK: false,
     runData: [],
     typeData: [],
-    categories: []
+    categories: [],
+    currentView: {
+        basic: "display",
+        analyses: "none",
+        meta: "none"
+    }
 }
 
 function appReducer(state = initialState, action) {
@@ -33,6 +39,18 @@ function appReducer(state = initialState, action) {
             let status = requests === 0? OK: FETCHING;
             let isOK = requests === 0;
 
+            if (action.dataType === "runData") {
+                const runData = action.payload.data.map(d => {
+                    console.log(d.time);
+                    return Object.assign({}, d, {
+                        date:  new Date(d.date),
+                        time: new Date(d.time.toLocaleString().slice(0, 19))
+                    });
+                });
+                action.payload.data = runData;
+            }
+            
+
             return Object.assign({}, state, {
                 requests: requests,
                 status: status,
@@ -40,6 +58,32 @@ function appReducer(state = initialState, action) {
                 isOK: isOK,
                 [action.dataType]: action.payload.data
             });
+        case CHANGE_VIEW:
+            let currentView = null;
+            if (action.payload.view === views[0]) {
+                currentView = {
+                    basic: "display",
+                    analyses: "none",
+                    meta: "none"
+                }
+            } else if (action.payload.view === views[1]) {
+                currentView = {
+                    basic: "none",
+                    analyses: "display",
+                    meta: "none"
+                }
+            } else {
+                currentView = {
+                    basic: "none",
+                    analyses: "none",
+                    meta: "display"
+                }
+            }
+            
+            return Object.assign({}, state, {
+                currentView: currentView
+            })
+
         default: 
             return state;
     }

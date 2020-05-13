@@ -91,6 +91,18 @@ a {
   opacity: 1;
 }
 
+.none {
+  display: none;
+}
+
+.display {
+  display: block;
+}
+
+.active {
+  background-color: red;
+}
+
 #scatter-1 {
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;

@@ -6,10 +6,11 @@ class BarChart extends React.Component {
     constructor(props) {
         super(props);
         this.drawChart = this.drawChart.bind(this);
+        this.isDrawn = false;
     }
 
     drawChart() {
-        if (this.props.isOK) {
+        if (this.props.isOK && !this.isDrawn) {
             const height = 300;
             const width = 200;
             const padding = 30;
@@ -65,6 +66,8 @@ class BarChart extends React.Component {
                     return i * 75 + centering;
                 })
                 .attr("y", (d) => -yScale(d.runs.length)/2);
+
+            this.isDrawn = true;
         }
 
     }

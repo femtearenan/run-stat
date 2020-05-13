@@ -80,6 +80,17 @@ a {
     opacity: 1;
 }
 
+.none {
+    display: none;
+}
+.display {
+    display: block;
+}
+
+.active {
+    background-color: red;
+}
+
 
 #scatter-1 {
     order: 2;

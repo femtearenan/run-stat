@@ -9,10 +9,11 @@ class HeatMap extends React.Component {
         this.height = this.props.height;
         this.padding = this.props.padding;
         this.drawHeatMap = this.drawHeatMap.bind(this);
+        this.isDrawn = false;
     }
 
     drawHeatMap() {
-        if (this.props.isOK) {
+        if (this.props.isOK && !this.isDrawn) {
             const data = [...this.props.runData];
             let heatData = data.map(d => {
                 
@@ -59,6 +60,7 @@ class HeatMap extends React.Component {
             
             const heatMap = new D3HeatMap(heatDataProcessed, "#heatmap", {x: "month", y:"day", heat: "duration"});
             heatMap.attachHeatMap();
+            this.isDrawn = true;
         }
     }
 
