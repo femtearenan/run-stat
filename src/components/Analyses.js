@@ -51,7 +51,7 @@ class Analyses extends React.Component {
                         <ScatterPlot id="1" />
                         <div className="info">
                             <h3>Run durations</h3>
-                            <p className="description">The evolutions of my runs compared by typed of run.</p>
+                            <p className="description">The evolutions of my runs compared with type of run.</p>
                         </div>
                     </div>
                     <div className="flex-2">
@@ -82,7 +82,7 @@ class Analyses extends React.Component {
                             <p className="description">The model however states that there is a positive correlation between the distance and how much the weight differs. For every kilometer 
                             the weight difference is increased by {this.props.isOK ? this.props.activeStatistic.data.a.toFixed(2) : "TBD"} kg. Put in imperial units: {this.props.isOK ? (this.props.activeStatistic.data.a*1.37).toFixed(2) : "TBD"} lbs/mile.</p>
                             <p className="description">As you can see, having shoes and a variable can take you places. But there are more to be known about the weight difference with more variables. 
-                            The distance by itself tells a part of the story. Other things that could matter is <em>weather</em>, <em>clothing</em>, <em>terrain</em>, <em>pre-weight</em> and <em>hydration/food</em>. With this avenues for potential further research I conclude the analysis.</p>
+                            The distance by itself tells a part of the story. Other things that could matter is <em>weather</em>, <em>clothing</em>, <em>terrain</em>, <em>pre-weight</em> and <em>hydration/food</em>. With these avenues for possible further research I conclude the analysis.</p>
                         </div>
                     </div>
                 </div>

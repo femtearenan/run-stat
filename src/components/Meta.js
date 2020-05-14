@@ -20,7 +20,7 @@ class Meta extends React.Component {
                     </div>
                     <div>
                         <h3>About me</h3>
-                        <p className="description">I am an enthusiastic runer and coder - hence this site.</p>
+                        <p className="description">I am an enthusiastic runner and coder - hence this site.</p>
                         <p className="description">If you want to follow my endeavours - check me out on <a href="https://twitter.com/abjorkland">Twitter</a> or my <a href="https://femtearenan.se">personal website</a>.</p>
                         <p className="description"></p>
                     </div>
