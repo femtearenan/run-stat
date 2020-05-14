@@ -140,6 +140,21 @@ article {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
+.stats-container .flex-1 {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+.stats-container .flex-2 {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+.stats-container .flex-3 {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
 
 .barchart-container {
   margin-top: 3rem;
