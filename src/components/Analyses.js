@@ -66,13 +66,13 @@ class Analyses extends React.Component {
                         <div className="info">
                             <h3>Distance (km) vs Weight Difference (kg)</h3>
                             <div className="flex">
-                                <button id={STATISTIC_CHOICES[0]} className="active" onClick={this.setStatistic}>
+                                <button id={STATISTIC_CHOICES[0]} className={this.props.activeStatistic.type === STATISTIC_CHOICES[0] ? "active" : ""} onClick={this.setStatistic}>
                                     {STATISTIC_CHOICES[0].charAt(0).toUpperCase() + STATISTIC_CHOICES[0].slice(1)}
                                 </button>
-                                <button id={STATISTIC_CHOICES[1]} className="" onClick={this.setStatistic}>
+                                <button id={STATISTIC_CHOICES[1]} className={this.props.activeStatistic.type === STATISTIC_CHOICES[1] ? "active" : ""} onClick={this.setStatistic}>
                                     {STATISTIC_CHOICES[1].charAt(0).toUpperCase() + STATISTIC_CHOICES[1].slice(1)}
                                 </button>
-                                <button id={STATISTIC_CHOICES[2]} className="" onClick={this.setStatistic}>
+                                <button id={STATISTIC_CHOICES[2]} className={this.props.activeStatistic.type === STATISTIC_CHOICES[2] ? "active" : ""} onClick={this.setStatistic}>
                                     {STATISTIC_CHOICES[2].charAt(0).toUpperCase() + STATISTIC_CHOICES[2].slice(1)}
                                 </button>
 

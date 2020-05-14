@@ -2,6 +2,8 @@ $paddingTop: 2rem;
 $padding: 2rem;
 $menuShadowColor: #1f1f1f;
 $menuShadowColorActive: #333333;
+$infoButtonMainActive:hsl(0, 0%, 82%);
+$infoButtonMain: hsl(0, 0%, 72%);
 
 @font-face {
     font-family: Cinzel;
@@ -185,6 +187,29 @@ article {
         p {
             margin: 0 1rem 0 0;
         }
+    }
+
+    button {
+        height: 1.7rem;
+        width: 6.5rem;
+        margin-right: 0.6rem;
+        outline: none;
+        border: none;
+        border-radius: 0;
+        color: #242424;
+        background-color: $infoButtonMain;
+        box-shadow: 0px -0.2rem 0px $infoButtonMain, 0.2rem 0px 0px $infoButtonMain, 0px 0.2rem 0px $infoButtonMain, -0.2rem 0px 0px $infoButtonMain,
+                    -0.2rem -0.2rem 0px $infoButtonMain, -0.2rem 0.2rem 0px $infoButtonMain, 0.2rem 0.2rem 0px $infoButtonMain, 0.2rem -0.2rem 0px $infoButtonMain;
+    }
+
+    button.active {
+        background-color: $infoButtonMainActive;
+        box-shadow: 0px -0.2rem 0px $infoButtonMainActive, 0.2rem 0px 0px $infoButtonMainActive, 0px 0.2rem 0px $infoButtonMainActive, -0.2rem 0px 0px $infoButtonMainActive,
+            -0.2rem -0.2rem 0px $infoButtonMainActive, -0.2rem 0.2rem 0px $infoButtonMainActive, 0.2rem 0.2rem 0px $infoButtonMainActive, 0.2rem -0.2rem 0px $infoButtonMainActive;
+    }
+
+    button:hover {
+        cursor: pointer;
     }
 }
 

@@ -197,6 +197,26 @@ article {
 .info .flex p {
   margin: 0 1rem 0 0;
 }
+.info button {
+  height: 1.7rem;
+  width: 6.5rem;
+  margin-right: 0.6rem;
+  outline: none;
+  border: none;
+  border-radius: 0;
+  color: #242424;
+  background-color: #b8b8b8;
+  -webkit-box-shadow: 0px -0.2rem 0px #b8b8b8, 0.2rem 0px 0px #b8b8b8, 0px 0.2rem 0px #b8b8b8, -0.2rem 0px 0px #b8b8b8, -0.2rem -0.2rem 0px #b8b8b8, -0.2rem 0.2rem 0px #b8b8b8, 0.2rem 0.2rem 0px #b8b8b8, 0.2rem -0.2rem 0px #b8b8b8;
+          box-shadow: 0px -0.2rem 0px #b8b8b8, 0.2rem 0px 0px #b8b8b8, 0px 0.2rem 0px #b8b8b8, -0.2rem 0px 0px #b8b8b8, -0.2rem -0.2rem 0px #b8b8b8, -0.2rem 0.2rem 0px #b8b8b8, 0.2rem 0.2rem 0px #b8b8b8, 0.2rem -0.2rem 0px #b8b8b8;
+}
+.info button.active {
+  background-color: #d1d1d1;
+  -webkit-box-shadow: 0px -0.2rem 0px #d1d1d1, 0.2rem 0px 0px #d1d1d1, 0px 0.2rem 0px #d1d1d1, -0.2rem 0px 0px #d1d1d1, -0.2rem -0.2rem 0px #d1d1d1, -0.2rem 0.2rem 0px #d1d1d1, 0.2rem 0.2rem 0px #d1d1d1, 0.2rem -0.2rem 0px #d1d1d1;
+          box-shadow: 0px -0.2rem 0px #d1d1d1, 0.2rem 0px 0px #d1d1d1, 0px 0.2rem 0px #d1d1d1, -0.2rem 0px 0px #d1d1d1, -0.2rem -0.2rem 0px #d1d1d1, -0.2rem 0.2rem 0px #d1d1d1, 0.2rem 0.2rem 0px #d1d1d1, 0.2rem -0.2rem 0px #d1d1d1;
+}
+.info button:hover {
+  cursor: pointer;
+}
 
 .bar-text {
   -webkit-transform: scaleY(-1);
