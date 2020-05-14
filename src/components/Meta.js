@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import BarChart from './BarChart';
-import Histogram from './Histogram';
 
 class Meta extends React.Component {
 

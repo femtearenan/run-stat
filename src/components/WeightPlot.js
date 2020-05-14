@@ -1,9 +1,6 @@
 import React from 'react';
-import { connect, createDispatchHook } from 'react-redux';
+import { connect } from 'react-redux';
 import * as d3 from 'd3';
-import * as d3r from 'd3-regression';
-import { setStatistic } from '../redux/actions';
-import { dispatch } from 'd3';
 
 class WeightPlot extends React.Component {
     constructor(props) {
@@ -33,10 +30,6 @@ class WeightPlot extends React.Component {
 
             let diffMin = d3.min(runData, d => d.weightDiff);
             let diffMax = d3.max(runData, d => d.weightDiff);
-
-            const intervals = runData.filter(d => d.type === "/api/run_types/2");
-            const normal = runData.filter(d => d.type === "/api/run_types/1")
-
 
             const xScale = d3.scaleLinear()
                 .domain([ distanceMin, distanceMax ])

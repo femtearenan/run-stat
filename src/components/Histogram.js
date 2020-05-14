@@ -37,7 +37,6 @@ class Histogram extends React.Component {
                 .attr("width", width)
                 .attr("height", height);
 
-            const yMin = d3.min(histoArr, d => d);
             const yMax = d3.max(histoArr, d => d);
 
             const xScale = d3.scaleLinear()
@@ -53,12 +52,6 @@ class Histogram extends React.Component {
             let tooltip = d3.select(".barchart-container").append("div")
                 .attr("id", "tooltip")
                 .style("opacity", 0);
-
-            let overlay = d3.select('.visHolder').append('div')
-                .attr('class', 'overlay')
-                .style('opacity', 0);
-
-            
 
             svg.selectAll("rect")
                 .data(histoArr)

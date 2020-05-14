@@ -124,7 +124,6 @@ article {
 
 #chart-types {
     display: flex;
-    justify-content: center;
 }
 
 #chart-1 {
@@ -377,4 +376,31 @@ a {
     100% {
         cx: 50;
     }
+}
+
+@media (max-width: 600px) {
+    .stats-container div {
+        width: 300px;
+        overflow: auto;
+    }
+
+    #chart-types {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #analyses {
+        .info {
+            margin-left: 0rem;
+        }
+    }
+
+    .description {
+        width: auto;
+    }
+
+    .scatter-legend {
+        margin-left: 2rem;
+    }
+
 }

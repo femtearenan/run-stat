@@ -120,7 +120,6 @@ function appReducer(state = initialState, action) {
             })
         case SET_STATISTIC:
             if (action.payload.type === STATISTIC_CHOICES[1]) {
-                console.log("Normal data");
                 return Object.assign({}, state, {
                     activeStatistic: {
                         type: action.payload.type,
@@ -128,7 +127,6 @@ function appReducer(state = initialState, action) {
                     }
                 })
             } else if (action.payload.type === STATISTIC_CHOICES[2]) {
-                console.log("Intervals data");
                 return Object.assign({}, state, {
                     activeStatistic: {
                         type: action.payload.type,
@@ -136,7 +134,6 @@ function appReducer(state = initialState, action) {
                     }
                 })
             } else {
-                console.log("Combined data");
                 return Object.assign({}, state, {
                     activeStatistic: {
                         type: action.payload.type,

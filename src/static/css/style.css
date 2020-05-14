@@ -118,9 +118,6 @@ article {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 #chart-1 {
@@ -415,6 +412,34 @@ a {
 @keyframes dot-anim {
   100% {
     cx: 50;
+  }
+}
+@media (max-width: 600px) {
+  .stats-container div {
+    width: 300px;
+    overflow: auto;
+  }
+
+  #chart-types {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+
+  #analyses .info {
+    margin-left: 0rem;
+  }
+
+  .description {
+    width: auto;
+  }
+
+  .scatter-legend {
+    margin-left: 2rem;
   }
 }
 /*# sourceMappingURL=style.css.map */
