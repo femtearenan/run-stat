@@ -1,9 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, createDispatchHook } from 'react-redux';
 import * as d3 from 'd3';
 import * as d3r from 'd3-regression';
+import { setStatistic } from '../redux/actions';
+import { dispatch } from 'd3';
 
-class ScatterPlot extends React.Component {
+class WeightPlot extends React.Component {
     constructor(props) {
         super(props);
         this.drawChart = this.drawChart.bind(this);
@@ -32,7 +34,6 @@ class ScatterPlot extends React.Component {
             let diffMin = d3.min(runData, d => d.weightDiff);
             let diffMax = d3.max(runData, d => d.weightDiff);
 
-            console.log(runData);
             const intervals = runData.filter(d => d.type === "/api/run_types/2");
             const normal = runData.filter(d => d.type === "/api/run_types/1")
 
@@ -76,19 +77,25 @@ class ScatterPlot extends React.Component {
                 .attr("transform", "translate(" + padding+ ", 0)")
                 .attr("id", "y-axis")
                 .call(yAxis);
-            
-            let linearFunc = d3r.regressionLinear()
-                .x(d => d.distance)
-                .y(d => d.weightDiff);
 
-            let linear = linearFunc(runData);
-            svg.append("line")
-                .attr("x1", xScale(linear[0][0]))
-                .attr("y1", yScale(linear[0][1]))
-                .attr("x2", xScale(linear[1][0]))
-                .attr("y2", yScale(linear[1][1]))
-                .attr("stroke-width", 2)
-                .attr("stroke", "#4964ff");
+            let linear = this.props.activeStatistic.data;
+            const linearArr = [];
+            linearArr.push(this.props.statistic.combined);
+            linearArr.push(this.props.statistic.normal);
+            linearArr.push(this.props.statistic.intervals);
+
+            for (let i = 0; i < linearArr.length; i++) {
+                svg.append("line")
+                    .attr("id", "line-" + i)
+                    .attr("class", i === 0 ? "show" : "hide")
+                    .attr("x1", xScale(linearArr[i][0][0]))
+                    .attr("y1", yScale(linearArr[i][0][1]))
+                    .attr("x2", xScale(linearArr[i][1][0]))
+                    .attr("y2", yScale(linearArr[i][1][1]))
+                    .attr("stroke-width", 2)
+                    .attr("stroke", "#4964ff");
+            }
+            
 
 
             const legend = d3.select(`#scatter-${this.props.id} `)
@@ -121,8 +128,9 @@ class ScatterPlot extends React.Component {
                 .attr("x", 20)
                 .attr("y", (d, i) => 12 + i * 20);
             
-            const funcString = "y=" + linear.a.toFixed(2) + "+" + linear.b.toFixed(2) +"x";
+            const funcString = "y=" + linear.b.toFixed(2) + "+" + linear.a.toFixed(2) +"x";
             const rSquared = "R\u00B2=" + linear.rSquared.toFixed(2);
+
 
             legend.append("rect")
                 .attr("x", 6)
@@ -131,11 +139,13 @@ class ScatterPlot extends React.Component {
                 .attr("height", 3)
                 .attr("fill", "#4964ff");
             legend.append("text")
+                .attr("id", "regression-function")
                 .attr("class", "legend-text")
                 .text(funcString)
                 .attr("x", 20)
                 .attr("y", 50);
             legend.append("text")
+                .attr("id", "r-squared")
                 .attr("class", "legend-text")
                 .text(rSquared)
                 .attr("x", 20)
@@ -169,4 +179,4 @@ const mapStateToProps = state => ({
     ...state
 });
 
-export default connect(mapStateToProps)(ScatterPlot);
+export default connect(mapStateToProps)(WeightPlot);

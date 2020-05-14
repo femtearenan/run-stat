@@ -1,4 +1,5 @@
-import {REQUEST_DATA, RESOLVED_GET_DATA, FAILED_GET_DATA, CHANGE_VIEW, views} from './actions';
+import {REQUEST_DATA, RESOLVED_GET_DATA, FAILED_GET_DATA, CHANGE_VIEW, views, SET_STATISTIC, STATISTIC_CHOICES} from './actions';
+import * as d3r from 'd3-regression';
 
 
 const INITIALIZING = "Initializing";
@@ -18,6 +19,15 @@ const initialState = {
         basic: "display",
         analyses: "none",
         meta: "none"
+    },
+    statistic: {
+        combined: [],
+        normal: [],
+        intervals: []
+    },
+    activeStatistic: {
+        type: "combined",
+        data: []
     }
 }
 
@@ -46,7 +56,33 @@ function appReducer(state = initialState, action) {
                         time: new Date(d.time.toLocaleString().slice(0, 19))
                     });
                 });
+                const linearFunc = d3r.regressionLinear()
+                    .x(d => d.distance)
+                    .y(d => d.weightDiff);
+                
+                const normalRuns = runData.filter(d => d.type === "/api/run_types/1");
+                const intervalRuns = runData.filter(d => d.type === "/api/run_types/2");
+                const combined = linearFunc(runData);
+                const normal = linearFunc(normalRuns);
+                const intervals = linearFunc(intervalRuns);
+                const statistic = {
+                    combined: combined,
+                    normal: normal,
+                    intervals: intervals
+                }
                 action.payload.data = runData;
+                return Object.assign({}, state, {
+                    requests: requests,
+                    status: status,
+                    isFetching: false,
+                    isOK: isOK,
+                    [action.dataType]: action.payload.data,
+                    statistic: statistic,
+                    activeStatistic: {
+                        type: "combined",
+                        data: combined
+                    }
+                });
             }
             
 
@@ -82,6 +118,33 @@ function appReducer(state = initialState, action) {
             return Object.assign({}, state, {
                 currentView: currentView
             })
+        case SET_STATISTIC:
+            if (action.payload.type === STATISTIC_CHOICES[1]) {
+                console.log("Normal data");
+                return Object.assign({}, state, {
+                    activeStatistic: {
+                        type: action.payload.type,
+                        data: state.statistic.normal
+                    }
+                })
+            } else if (action.payload.type === STATISTIC_CHOICES[2]) {
+                console.log("Intervals data");
+                return Object.assign({}, state, {
+                    activeStatistic: {
+                        type: action.payload.type,
+                        data: state.statistic.intervals
+                    }
+                })
+            } else {
+                console.log("Combined data");
+                return Object.assign({}, state, {
+                    activeStatistic: {
+                        type: action.payload.type,
+                        data: state.statistic.combined
+                    }
+                })
+            }
+            
 
         default: 
             return state;

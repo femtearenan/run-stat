@@ -2,6 +2,8 @@ export const REQUEST_DATA = "REQUEST_DATA";
 export const RESOLVED_GET_DATA = "RESOLVED_GET_DATA";
 export const FAILED_GET_DATA = "FAILED_GET_DATA";
 export const CHANGE_VIEW = "CHANGE_VIEW";
+export const SET_STATISTIC = "SET_STATISTIC";
+export const STATISTIC_CHOICES = ["combined", "normal", "intervals"]
 
 export const views = ["basic", "analyses", "meta"];
 
@@ -48,6 +50,15 @@ export const resolvedGetData = (dataType, json) => {
         dataType: dataType,
         payload: {
             data: json
+        }
+    }
+}
+
+export const setStatistic = (type) => {
+    return {
+        type: SET_STATISTIC,
+        payload: {
+            type: type
         }
     }
 }
